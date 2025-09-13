@@ -1,0 +1,83 @@
+/* AddToCartButton.css */
+
+/* Base button styles */
+.add-to-cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 1.5rem;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Gradient background and hover effect for normal state */
+.add-to-cart-btn:not(.adding) {
+    background: linear-gradient(to right, #4F46E5, #9333EA, #EC4899);
+    color: white;
+}
+
+.add-to-cart-btn:not(.adding):hover {
+    background: linear-gradient(to right, #4338CA, #7C3AED, #DB2777);
+}
+
+/* Disabled (adding state) */
+.add-to-cart-btn.adding {
+    background-color: #e5e7eb;
+    color: #6B7280;
+    cursor: not-allowed;
+}
+
+.add-to-cart-btn.adding:hover {
+    background-color: #e5e7eb;
+}
+
+/* Spinner animation for adding state */
+.add-to-cart-btn .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation keyframes */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Spacing for text and spinner */
+.add-to-cart-btn .spinner + span {
+    margin-left: 10px;
+}
+
+/* Custom text styles for adding state */
+.add-to-cart-btn.adding span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Transition effect for all states */
+.add-to-cart-btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover and active states */
+.add-to-cart-btn:not(.adding):active {
+    transform: scale(0.98);
+}
+
+.add-to-cart-btn.adding:active {
+    transform: scale(1);
+}

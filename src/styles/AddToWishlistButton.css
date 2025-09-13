@@ -1,0 +1,89 @@
+/* General button styles */
+.wishlist-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--surface);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+/* Hover effect for button */
+.wishlist-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px); /* Floating effect with stronger movement */
+}
+
+/* Liked state styles */
+.wishlist-btn.liked {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); /* Subtle red glow */
+}
+
+.wishlist-btn.liked:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px); /* Floating effect on hover */
+}
+
+/* Loading state styles */
+.wishlist-btn.loading {
+    background-color: var(--background);
+    color: var(--secondary);
+    cursor: wait;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* Button animation effects */
+.wishlist-btn:active {
+    transform: scale(0.96); /* Slightly more subtle active effect */
+}
+
+/* Heart icon styles */
+.wishlist-btn.liked .heart-icon {
+    color: var(--heart-liked-color);
+    animation: pulse 1s infinite; /* Heart icon pulsing animation when liked */
+}
+
+.wishlist-btn:not(.liked) .heart-icon {
+    color: var(--heart-default-color);
+}
+
+/* Pulse effect for liked heart */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Color Variables */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary: #6b7280;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --text-primary: #1e293b;
+    --heart-liked-color: #e11d48; /* Red for liked heart */
+    --heart-default-color: #6b7280; /* Gray for non-liked heart */
+}

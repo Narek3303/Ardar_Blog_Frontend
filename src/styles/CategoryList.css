@@ -1,0 +1,133 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Category List Styles */
+.category-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.discount-banner {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.discount-banner img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.discount-banner p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Category Header */
+.category-item {
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.category-header h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.category-header:hover h3 {
+    color: #ff5722;
+}
+
+.category-header img {
+    max-width: 50px;
+    height: auto;
+    margin-right: 12px;
+    border-radius: 4px;
+}
+
+/* Subcategory List */
+.subcategory-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 16px;
+}
+
+.subcategory-item {
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subcategory-item:hover {
+    background-color: #f1f1f1;
+}
+
+.subcategory-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.subcategory-item img {
+    max-width: 40px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .category-list {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .category-header h3 {
+        font-size: 18px;
+    }
+
+    .subcategory-item p {
+        font-size: 14px;
+    }
+
+    .discount-banner p {
+        font-size: 16px;
+    }
+
+    .subcategory-item {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,366 @@
+/* ================ CSS Variables ================ */
+:root {
+    /* Color Palette */
+    --color-primary: #FF6B6B;
+    --color-primary-dark: #FF5252;
+    --color-primary-light: #FFE9E9;
+    --color-secondary: #48DBFB;
+    --color-secondary-dark: #20C7F3;
+    --color-accent: #A55EEA;
+    --color-accent-dark: #8D44E0;
+    --color-dark: #2D3436;
+    --color-dark-80: rgba(45, 52, 54, 0.8);
+    --color-dark-60: rgba(45, 52, 54, 0.6);
+    --color-light: #F5F6FA;
+    --color-light-80: rgba(245, 246, 250, 0.8);
+    --color-gray: #DFE6E9;
+    --color-gray-dark: #B2BEC3;
+    --color-white: #FFFFFF;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    /* Transitions */
+    --transition-default: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: all 0.15s ease;
+
+    /* Layout */
+    --header-height: 80px;
+    --max-width: 1440px;
+    --sidebar-width: 300px;
+
+    /* Z-index */
+    --z-index-low: 10;
+    --z-index-medium: 100;
+    --z-index-high: 1000;
+    --z-index-highest: 1100;
+}
+
+/* ================ Base Styles ================ */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================ Layout Components ================ */
+.pageContainer {
+    position: relative;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background-color: var(--color-light);
+    min-height: 100vh;
+    padding-bottom: var(--space-xl);
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.heroSection {
+    position: relative;
+    margin-bottom: var(--space-xl);
+}
+
+.sliderContainer {
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.resultCountContainer {
+    position: absolute;
+    bottom: var(--space-md);
+    right: var(--space-xl);
+    background: var(--color-white);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    z-index: var(--z-index-low);
+}
+
+.resultCount {
+    color: var(--color-dark-80);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Controls Container */
+.controlsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-xl);
+    margin-bottom: var(--space-lg);
+}
+
+/* ================ UI Components ================ */
+/* Category Panel */
+.categoryPanel {
+    position: fixed;
+    left: calc(-1 * var(--sidebar-width));
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--color-white);
+    z-index: var(--z-index-high);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-default);
+    padding: var(--space-lg);
+    overflow-y: auto;
+    padding-top: calc(var(--header-height) + var(--space-md));
+}
+
+.categoryPanel.open {
+    left: 0;
+}
+
+/* Buttons */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-default);
+    box-shadow: var(--shadow-sm);
+}
+
+.button--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.button--primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.button--secondary {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray);
+    color: var(--color-dark);
+}
+
+.button--secondary:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary);
+}
+
+.button--active {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+/* Icon Buttons */
+.iconButton {
+    position: relative;
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    transition: var(--transition-default);
+}
+
+.iconButton--category {
+    composes: button--primary;
+    z-index: var(--z-index-highest);
+}
+
+.iconButton--filter {
+    composes: button--secondary;
+    gap: var(--space-sm);
+}
+
+.iconButton--active {
+    composes: button--active;
+}
+
+.filterText {
+    font-size: 0.9rem;
+}
+
+/* ================ Content Layout ================ */
+.contentContainer {
+    display: flex;
+    padding: 0 var(--space-xl);
+    gap: var(--space-xl);
+}
+
+.filtersContainer {
+    flex: 0 0 280px;
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+    align-self: flex-start;
+    max-height: calc(100vh - var(--header-height) - var(--space-xl));
+    overflow-y: auto;
+    padding-right: var(--space-sm);
+}
+
+/* Product Grid */
+.productGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.productGrid > * {
+    animation: fadeIn 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+/* ================ State Components ================ */
+/* Empty State */
+.emptyState {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-xxl) var(--space-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-top: var(--space-xl);
+}
+
+.emptyText {
+    color: var(--color-dark);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+.emptySubtext {
+    color: var(--color-dark-60);
+}
+
+/* Auth Message */
+.authMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: var(--space-xl);
+    text-align: center;
+}
+
+.authTitle {
+    color: var(--color-dark);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+/* ================ Animations ================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ================ Responsive Design ================ */
+@media (max-width: 1024px) {
+    .contentContainer {
+        flex-direction: column;
+    }
+
+    .filtersContainer {
+        position: static;
+        max-height: none;
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: var(--space-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .controlsContainer {
+        padding: 0 var(--space-md);
+    }
+
+    .contentContainer {
+        padding: 0 var(--space-md);
+    }
+
+    .productGrid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .categoryPanel {
+        width: 280px;
+        left: -280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .filterText {
+        display: none;
+    }
+
+    .iconButton--filter {
+        padding: var(--space-sm);
+    }
+
+    .resultCountContainer {
+        right: var(--space-md);
+        bottom: var(--space-sm);
+    }
+}
+
+/* ================ Accessibility Improvements ================ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ================ Print Styles ================ */
+@media print {
+    .pageContainer {
+        background-color: white;
+        padding: 0;
+    }
+
+    .controlsContainer,
+    .categoryPanel,
+    .filtersContainer {
+        display: none;
+    }
+
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+}
+

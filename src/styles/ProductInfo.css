@@ -1,0 +1,138 @@
+/* ProductInfo.css */
+
+/* Base styles */
+:root {
+    --primary-color: #2b6cb0;
+    --text-color: #2d3748;
+    --text-light: #555;
+    --text-lighter: #a0aec0;
+    --border-color: #e2e8f0;
+    --discount-color: #e53e3e;
+    --background-color: #fff;
+    --shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Accessibility helper */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Main container */
+.product-info {
+    padding: 2rem;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-width: 700px;
+    margin: 2.5rem auto;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: var(--text-color);
+}
+
+/* Sections */
+.info-section {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.info-section:last-child {
+    border-bottom: none;
+}
+
+.info-section:hover {
+    background-color: rgba(43, 108, 176, 0.03);
+}
+
+/* Titles */
+.section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Content */
+.info-content {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Price section */
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.current-price {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.original-price {
+    font-size: 1.125rem;
+    color: var(--text-lighter);
+    text-decoration: line-through;
+    position: relative;
+}
+
+.discount-badge {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--discount-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-info {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .info-section {
+        padding: 0.75rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-info {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .info-content {
+        font-size: 0.9375rem;
+    }
+
+    .current-price {
+        font-size: 1.25rem;
+    }
+
+    .original-price {
+        font-size: 1rem;
+    }
+}

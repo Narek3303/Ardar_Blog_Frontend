@@ -1,0 +1,306 @@
+/* Slider.css */
+
+/* ================ */
+/* Design Tokens */
+/* ================ */
+:root {
+    /* Colors */
+    --slider-primary: #4f46e5;
+    --slider-primary-hover: #4338ca;
+    --slider-text: #1f2937;
+    --slider-text-light: #6b7280;
+    --slider-bg: #ffffff;
+    --slider-border: #e5e7eb;
+    --slider-error: #dc2626;
+
+    /* Spacing */
+    --slider-space-xs: 0.25rem;
+    --slider-space-sm: 0.5rem;
+    --slider-space-md: 1rem;
+    --slider-space-lg: 1.5rem;
+
+    /* Shadows */
+    --slider-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --slider-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    /* Transitions */
+    --slider-transition-fast: 0.15s ease-in-out;
+    --slider-transition-normal: 0.3s ease-in-out;
+    --slider-transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Sizes */
+    --slider-arrow-size: 3rem;
+    --slider-dot-size: 0.75rem;
+}
+
+/* ================ */
+/* Base Styles */
+/* ================ */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform var(--slider-transition-slow);
+    height: 100%;
+}
+
+.slider-item {
+    flex: 0 0 100%;
+    width: 100%;
+    transition: opacity var(--slider-transition-normal);
+}
+
+.slider-item:not(.active) {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+}
+
+/* ================ */
+/* Navigation Arrows */
+/* ================ */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--slider-arrow-size);
+    height: var(--slider-arrow-size);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: var(--slider-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--slider-shadow-sm);
+    transition: all var(--slider-transition-fast);
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.slider-arrow:hover {
+    opacity: 1;
+    background-color: var(--slider-bg);
+    box-shadow: var(--slider-shadow-md);
+    color: var(--slider-primary);
+}
+
+.slider-arrow:focus-visible {
+    outline: 2px solid var(--slider-primary);
+    outline-offset: 2px;
+}
+
+.slider-arrow svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.left-arrow {
+    left: var(--slider-space-md);
+}
+
+.right-arrow {
+    right: var(--slider-space-md);
+}
+
+/* ================ */
+/* Dot Indicators */
+/* ================ */
+.slider-dots {
+    position: absolute;
+    bottom: var(--slider-space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--slider-space-sm);
+    z-index: 10;
+}
+
+.slider-dot {
+    width: var(--slider-dot-size);
+    height: var(--slider-dot-size);
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all var(--slider-transition-fast);
+    padding: 0;
+}
+
+.slider-dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.slider-dot.active {
+    background-color: var(--slider-bg);
+    transform: scale(1.2);
+}
+
+.slider-dot:focus-visible {
+    outline: 2px solid var(--slider-bg);
+    outline-offset: 2px;
+}
+
+/* ================ */
+/* State Styles */
+/* ================ */
+.slider-loading,
+.slider-error,
+.slider-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    background-color: var(--slider-bg);
+    color: var(--slider-text);
+    padding: var(--slider-space-lg);
+    text-align: center;
+}
+
+.slider-error {
+    color: var(--slider-error);
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 3px solid rgba(79, 70, 229, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--slider-primary);
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--slider-space-md);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Retry Button */
+.retry-button {
+    margin-top: var(--slider-space-md);
+    padding: var(--slider-space-sm) var(--slider-space-md);
+    background-color: var(--slider-primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color var(--slider-transition-fast);
+}
+
+.retry-button:hover {
+    background-color: var(--slider-primary-hover);
+}
+
+/* ================ */
+/* Responsive Styles */
+/* ================ */
+@media (max-width: 768px) {
+    :root {
+        --slider-arrow-size: 2.5rem;
+        --slider-dot-size: 0.625rem;
+    }
+
+    .slider-arrow {
+        opacity: 0.9;
+    }
+
+    .slider-dots {
+        bottom: var(--slider-space-md);
+    }
+}
+
+/* ================ */
+/* Accessibility */
+/* ================ */
+@media (prefers-reduced-motion: reduce) {
+    .slider-wrapper,
+    .slider-item {
+        transition: none !important;
+    }
+
+    .spinner {
+        animation: none;
+        border-top-color: transparent;
+    }
+}
+
+/* ================ */
+/* Animation Effects */
+/* ================ */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slider-item.active {
+    animation: fadeIn var(--slider-transition-normal) forwards;
+}
+
+/* Optional: Slide animation */
+.slide-left-enter {
+    transform: translateX(100%);
+}
+.slide-left-enter-active {
+    transform: translateX(0);
+    transition: transform var(--slider-transition-slow);
+}
+.slide-left-exit {
+    transform: translateX(0);
+}
+.slide-left-exit-active {
+    transform: translateX(-100%);
+    transition: transform var(--slider-transition-slow);
+}
+
+.slide-right-enter {
+    transform: translateX(-100%);
+}
+.slide-right-enter-active {
+    transform: translateX(0);
+    transition: transform var(--slider-transition-slow);
+}
+.slide-right-exit {
+    transform: translateX(0);
+}
+.slide-right-exit-active {
+    transform: translateX(100%);
+    transition: transform var(--slider-transition-slow);
+}
+
+/* Emergency Fixes */
+.slider-container {
+    height: 500px; /* Required */
+    position: relative;
+}
+
+.slider-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.slider-item {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slider-item.active {
+    opacity: 1;
+    z-index: 1;
+}

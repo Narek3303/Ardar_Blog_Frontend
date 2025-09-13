@@ -1,0 +1,30 @@
+/* WishlistItem.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.wishlist-item {
+    font-family: 'Inter', sans-serif;
+}
+
+.wishlist-item .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Smooth transitions for all interactive elements */
+.wishlist-item button,
+.wishlist-item img {
+    transition: all 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+.wishlist-item button:focus {
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+}
+
+/* Loading overlay */
+.wishlist-item .loading-overlay {
+    backdrop-filter: blur(2px);
+}

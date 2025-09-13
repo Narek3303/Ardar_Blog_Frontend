@@ -1,0 +1,273 @@
+/* SizeSelectModal.css */
+
+/* ===== Գլոբալ փոփոխականներ (Glass Morphism) ===== */
+:root {
+    /* Գույների համակարգ */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+
+    --blue-100: #dbeafe;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-800: #1e40af;
+    --blue-900: #1e3a8a;
+
+    --purple-500: #8b5cf6;
+    --purple-600: #7c3aed;
+    --purple-700: #6d28d9;
+
+    /* Հատվածներ, անցումներ, ստվերներ */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+
+    --transition-fast: all 0.15s ease-in-out;
+    --transition-normal: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    --transition-slow: all 0.5s cubic-bezier(0.4,0,0.2,1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68,-0.6,0.32,1.6);
+
+    --gradient-primary: linear-gradient(135deg, #4361ee, #3a0ca3);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+
+/* ===== Modal-ի հիմնական ձևավորումը ===== */
+.size-select-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: var(--space-md);
+}
+
+.size-select-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.size-select-modal__content {
+    position: relative;
+    max-width: 32rem;
+    width: 100%;
+    margin: auto;
+}
+
+.size-select-modal__card {
+    background: rgba(255,255,255,0.9);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+    transform-origin: center;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+
+
+/* Dark Mode */
+.dark .size-select-modal__card {
+    background: rgba(30,30,30,0.9);
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* ===== Վերնագիր ===== */
+.size-select-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-xl) var(--space-xl) var(--space-lg);
+    position: relative;
+}
+
+.size-select-modal__header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--space-xl);
+    right: var(--space-xl);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+.dark .size-select-modal__header::after {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+.size-select-modal__header-content {
+    flex: 1;
+}
+
+.size-select-modal__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: 0 0 var(--space-xs);
+    line-height: 1.3;
+}
+
+.dark .size-select-modal__title {
+    color: var(--white);
+}
+
+.size-select-modal__subtitle {
+    font-size: 0.9375rem;
+    color: var(--gray-500);
+    margin: 0;
+    font-weight: 500;
+}
+
+.dark .size-select-modal__subtitle {
+    color: var(--gray-400);
+}
+
+.size-select-modal__close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-400);
+    background: rgba(0,0,0,0.05);
+    border: none;
+    border-radius: 50%;
+    padding: var(--space-sm);
+    transition: var(--transition-normal);
+    cursor: pointer;
+    margin-left: var(--space-md);
+    backdrop-filter: blur(4px);
+}
+
+.size-select-modal__close-btn:hover {
+    color: var(--gray-600);
+    background: rgba(0,0,0,0.1);
+    transform: rotate(90deg);
+}
+
+.dark .size-select-modal__close-btn {
+    color: var(--gray-400);
+    background: rgba(255,255,255,0.05);
+}
+
+.dark .size-select-modal__close-btn:hover {
+    color: var(--gray-200);
+    background: rgba(255,255,255,0.1);
+}
+
+.size-select-modal__close-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2.5px;
+}
+
+/* ===== Չափերի ցուցակը ===== */
+.size-select-modal__list-container {
+    padding: var(--space-md) var(--space-xl);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.size-select-modal__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.size-select-modal__item-btn {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    text-align: left;
+    border-radius: 0.75rem;
+    border: 1px solid var(--gray-200);
+    background-color: var(--white);
+    color: var(--gray-800);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-normal);
+    cursor: pointer;
+    outline: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.size-select-modal__item-btn:hover,
+.size-select-modal__item-btn:focus {
+    background-color: var(--white);
+    color: var(--blue-700);
+    border-color: var(--blue-400);
+    box-shadow: var(--shadow-md);
+}
+
+.dark .size-select-modal__item-btn {
+    background-color: rgba(30,30,30,0.7);
+    border-color: var(--gray-700);
+    color: var(--gray-200);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dark .size-select-modal__item-btn:hover,
+.dark .size-select-modal__item-btn:focus {
+    background-color: rgba(30,30,30,0.9);
+    color: var(--white);
+    border-color: var(--blue-700);
+}
+
+.size-select-modal__item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.size-select-modal__size-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.size-select-modal__size-available {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-left: var(--space-sm);
+    white-space: nowrap;
+}
+
+.dark .size-select-modal__size-available {
+    color: var(--gray-400);
+}
+
+/* ===== Հավելյալ սրահի էֆեկտ ===== */
+.size-select-modal__footer {
+    padding: var(--space-md) var(--space-xl);
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    user-select: none;
+}
+
+.dark .size-select-modal__footer {
+    color: var(--gray-600);
+}

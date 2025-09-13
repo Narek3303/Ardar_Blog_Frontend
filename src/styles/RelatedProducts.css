@@ -1,0 +1,93 @@
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem 2rem;
+}
+
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.carousel-container::-webkit-scrollbar { display: none; }
+
+/* Սլայդեր */
+.slide {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 96px;
+    margin-right: 1rem;
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.slide-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Ձախակողմյան աստիճանող շողք hover-ին */
+.slide:hover {
+    box-shadow:
+            0 0 8px rgba(58, 134, 255, 0.6),
+            0 0 16px rgba(58, 134, 255, 0.4),
+            inset 0 0 8px rgba(58, 134, 255, 0.6);
+}
+
+/* Կենտրոնական սլայդը փոքրը մեծացվում է */
+.slide.active {
+    transform: scale(1.1);
+}
+
+/* Arrow */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background 0.2s ease;
+}
+.carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+.carousel-arrow:hover:not(:disabled) {
+    background: rgba(255,255,255,1);
+}
+
+/* Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.75rem;
+    gap: 0.5rem;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: width 0.2s ease, background 0.2s ease;
+}
+.dot--active {
+    width: 8px;
+    background: #3a86ff;
+}

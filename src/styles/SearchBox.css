@@ -1,0 +1,12 @@
+/* src/styles/SearchBox.css */
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+.search-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

@@ -1,0 +1,138 @@
+/* WriteReviewForm.css */
+
+/* Base Styles */
+.write-review {
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.write-review__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+/* Form Elements */
+.write-review__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.write-review__form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.write-review__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.write-review__textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.write-review__textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+/* Star Rating */
+.write-review__stars {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.write-review__star {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.write-review__star:hover {
+    transform: scale(1.1);
+}
+
+.write-review__star--active {
+    color: #f59e0b;
+}
+
+.write-review__star--inactive {
+    color: #e5e7eb;
+}
+
+.write-review__rating-value {
+    margin-left: 0.5rem;
+    color: #6b7280;
+}
+
+/* Messages */
+.write-review__message {
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+}
+
+.write-review__message--error {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.write-review__message--success {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+/* Button */
+.write-review__button {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.write-review__button:hover {
+    background-color: #1d4ed8;
+}
+
+.write-review__button:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+.write-review__spinner {
+    animation: write-review__spin 1s linear infinite;
+}
+
+@keyframes write-review__spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
